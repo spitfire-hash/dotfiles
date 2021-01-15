@@ -5,7 +5,7 @@
 # check if zplug is installed
 export ZPLUG_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zplug"
 [ ! -d $ZPLUG_HOME ] && curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-source "$ZPLUG_HOME/init.zsh"
+source $ZPLUG_HOME/init.zsh
 
 # zplug
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -143,7 +143,7 @@ if zplug check "seebi/dircolors-solarized"; then
   fi
   if which dircolors &> /dev/null; then
     scheme="dircolors.256dark"
-    eval $(dircolors ~/.zplug/repos/seebi/dircolors-solarized/$scheme)
+    eval $(dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/$scheme)
   fi
 fi
 
@@ -196,4 +196,3 @@ export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvm"
 [ ! -d $NVM_DIR ] && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
